@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "547262668813",
+    "project_id": "final-year-project-f5f34",
+    "storage_bucket": "final-year-project-f5f34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547262668813:android:4d9680509f33b0ea6fb544",
+        "android_client_info": {
+          "package_name": "com.finalyear.bookstock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547262668813-6va5jcgp3t5cj7uqbcjcfuo6tcjtrgq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE7BI1w059DD72_e5S8V6xxoXwFPBRaZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547262668813-6va5jcgp3t5cj7uqbcjcfuo6tcjtrgq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

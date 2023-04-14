@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusableInTouchMode="true"
+    tools:context=".common.CustomerLogin">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/LogInProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/white"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/login">
+
+        </ImageView>
+
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome You To\nBookShelves"
+                android:textSize="20sp"
+                android:fontFamily="@font/nunito"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:textColor="@color/darkBlue" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="#ABBCCEF8"
+                android:focusableInTouchMode="true">
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sign In Here :"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/nunito"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/darkBlue" />
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="300dp"
+                        android:layout_height="60dp">
+
+                        <EditText
+                            android:id="@+id/emailInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/email"
+                            android:textColorLink="@color/black"
+                            android:textSize="19sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="300dp"
+                        android:layout_height="60dp"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@android:color/black">
+
+                        <EditText
+                            android:id="@+id/passwordInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/password"
+                            android:textColorLink="@color/black"
+                            android:inputType="textPassword"
+                            android:textSize="20sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/forgotpassLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:textAllCaps="false"
+                        android:text="@string/forget_pass"/>
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"/>
+                    <Button
+                        android:id="@+id/loginButton"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:text="@string/login"
+                        android:textColor="@color/white"
+                        android:background="@drawable/round_corner"
+                        android:textAllCaps="false" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"/>
+                    <Button
+                        android:id="@+id/createaccLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="Go To Main Page"
+                        android:textAllCaps="false"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
