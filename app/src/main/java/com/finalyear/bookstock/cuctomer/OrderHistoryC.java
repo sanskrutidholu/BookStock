@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -41,6 +42,7 @@ public class OrderHistoryC extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history_c);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
@@ -113,9 +115,10 @@ public class OrderHistoryC extends AppCompatActivity {
         adapter.startListening();
         recyler_order_history_c.setAdapter(adapter);
     }
+
         public static class OrdersViewHolder extends RecyclerView.ViewHolder {
             View mView;
-            LinearLayout container; //row_order_cus_list
+            CardView container; //row_order_cus_list
             TextView row_bname,row_bauthor,row_bprice,row_bstatus,row_updatedon;
 
             OrdersViewHolder(@NonNull View itemView) {

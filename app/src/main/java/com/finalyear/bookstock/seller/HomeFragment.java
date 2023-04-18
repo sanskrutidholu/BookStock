@@ -1,4 +1,4 @@
-package com.finalyear.bookstock.cuctomer;
+package com.finalyear.bookstock.seller;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

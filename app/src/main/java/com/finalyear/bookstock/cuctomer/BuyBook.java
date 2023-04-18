@@ -34,7 +34,7 @@ import java.util.UUID;
 
 public class BuyBook extends AppCompatActivity {
 
-    public TextView oname,obname,obauthorname,ogenre,oprice,oitemprice,odeliprice,ototalprice,famount,onumber;
+    public TextView oname,obname,obauthorname,oprice,oitemprice,odeliprice,ototalprice,famount,onumber;
     public EditText oaddress,opin;
     public Button order;
     public ImageView bthumbnail;
@@ -53,6 +53,8 @@ public class BuyBook extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_book);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
         final String uniqueid= UUID.randomUUID().toString();
         Calendar calender= Calendar.getInstance();
@@ -64,7 +66,6 @@ public class BuyBook extends AppCompatActivity {
         oaddress=findViewById(R.id.oaddress);
         obname=findViewById(R.id.obname);
         obauthorname=findViewById(R.id.obauthorname);
-        ogenre=findViewById(R.id.ogenre);
         oprice=findViewById(R.id.oprice);
         opin=findViewById(R.id.opin);
         oitemprice=findViewById(R.id.oitemprice);
@@ -80,7 +81,6 @@ public class BuyBook extends AppCompatActivity {
         String bookauthor = getIntent().getStringExtra("book_author");
         String booktitle = getIntent().getStringExtra("book_title");
         String image = getIntent().getStringExtra("book_thumbnail");
-        String genre = getIntent().getStringExtra("book_cat");
         sprice= getIntent().getIntExtra("sp",0);
         dprice= getIntent().getIntExtra("dc",0);
         int available = getIntent().getIntExtra("qu", 0);
@@ -89,9 +89,7 @@ public class BuyBook extends AppCompatActivity {
         Glide.with(BuyBook.this).load(image).placeholder(R.drawable.loading_shape).dontAnimate().into(bthumbnail);
         obname.setText(booktitle);
         obauthorname.setText(bookauthor);
-        ogenre.setText(genre);
         oprice.setText(String.format("%s ₹", String.valueOf(sprice)));
-        ogenre.setText("");
         oitemprice.setText(String.format("%s ₹", String.valueOf(sprice)));
         odeliprice.setText(String.format("%s ₹", String.valueOf(dprice)));
         total=sprice+dprice;
@@ -175,8 +173,9 @@ public class BuyBook extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            Intent i = new Intent(BuyBook.this, Placed.class);
+                                            Intent i = new Intent(BuyBook.this, OrderHistoryC.class);
                                             startActivity(i);
+                                            finish();
                                         }
                                     }
                                 });

@@ -170,7 +170,7 @@ public class CreatAccountSeller extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
                                         createaccButton.setText("Create Account");
-                                        Toast.makeText(CreatAccountSeller.this,"Welcome to BookCave", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(CreatAccountSeller.this,"Welcome to BookStore", Toast.LENGTH_LONG).show();
 //                                        FirebaseAuth.getInstance().signOut();
                                         Intent i = new Intent(CreatAccountSeller.this, HomeSeller.class);
                                         startActivity(i);

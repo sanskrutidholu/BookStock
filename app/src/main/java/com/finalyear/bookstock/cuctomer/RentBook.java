@@ -33,18 +33,18 @@ import java.util.UUID;
 
 public class RentBook extends AppCompatActivity {
 
-    public TextView oname,obname,obauthorname,ogenre,oprice,oitemprice,odeliprice,ototalprice,famount,onumber,showdays;
+    public TextView oname,obname,obauthorname,oprice,oitemprice,odeliprice,ototalprice,famount,onumber;
     public EditText oaddress,opin;
     public Button order;
     public ImageView bthumbnail;
-    private int total,days;
-    private SeekBar seekBar;
+    private int total;
     private String userid,bookid,bookauthor,booktitle,image,rprice,genre,mailid,sid,dateTime,sbid;
     private int sprice,dprice,available,newsp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rent_book);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
         final String uniqueid= UUID.randomUUID().toString();
@@ -57,7 +57,6 @@ public class RentBook extends AppCompatActivity {
         oaddress=findViewById(R.id.oaddress);
         obname=findViewById(R.id.obname);
         obauthorname=findViewById(R.id.obauthorname);
-        ogenre=findViewById(R.id.ogenre);
         oprice=findViewById(R.id.oprice);
         opin=findViewById(R.id.opin);
         oitemprice=findViewById(R.id.oitemprice);
@@ -66,8 +65,6 @@ public class RentBook extends AppCompatActivity {
         famount=findViewById(R.id.famount);
         order=findViewById(R.id.placeorder);
         bthumbnail=findViewById(R.id.bthumbnail);
-        seekBar=findViewById(R.id.seekBar);
-        showdays=findViewById(R.id.showdays);
 
         //get the order information
         bookid = getIntent().getStringExtra("book_id");
@@ -80,60 +77,33 @@ public class RentBook extends AppCompatActivity {
         dprice= getIntent().getIntExtra("dc",0);
         available = getIntent().getIntExtra("qu",0);
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                days=progress;
-                showdays.setText(String.valueOf(days));
-                newsp=sprice*progress;
-                total=newsp+dprice;
-                oitemprice.setText(String.format("%s ₹", String.valueOf(newsp)));
-                ototalprice.setText(String.format("%s ₹", String.valueOf(total)));
-                famount.setText(String.format("₹ %s", String.valueOf(total)));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
         //set text
         Glide.with(RentBook.this).load(image).placeholder(R.drawable.loading_shape).dontAnimate().into(bthumbnail);
         obname.setText(booktitle);
         obauthorname.setText(bookauthor);
-        ogenre.setText(genre);
-        oprice.setText(String.format("%s ₹", String.valueOf(sprice)));
-        ogenre.setText("");
-        oitemprice.setText(String.format("%s ₹", String.valueOf(sprice)));
-        odeliprice.setText(String.format("%s ₹", String.valueOf(dprice)));
-        //total=sprice+dprice;
-        ototalprice.setText(String.format("%s ₹", String.valueOf(total)));
-        famount.setText(String.format("₹ %s", String.valueOf(total)));
+        oprice.setText(String.format("%s ₹", sprice));
+        oitemprice.setText(String.format("%s ₹", sprice));
+        odeliprice.setText(String.format("%s ₹", dprice));
+        total=sprice+dprice;
+        ototalprice.setText(String.format("%s ₹", total));
+        famount.setText(String.format("₹ %s", total));
 
         //get all the data
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         userid = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
         //For user/customer
         DocumentReference docRef = db.collection("Users").document(userid);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    String fullName = documentSnapshot.getString("firstname")+" "+documentSnapshot.getString("lastname");
-                    String phno = documentSnapshot.getString("phno");
-                    String pc = documentSnapshot.getString("pincode");
-                    String ad = documentSnapshot.getString("address");
-                    mailid = documentSnapshot.getString("email");
-                    oname.setText(fullName);
-                    onumber.setText(phno);
-                    oaddress.setText(ad);
-                    opin.setText(pc);
-                }
+        docRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                String fullName = documentSnapshot.getString("firstname")+" "+documentSnapshot.getString("lastname");
+                String phno = documentSnapshot.getString("phno");
+                String pc = documentSnapshot.getString("pincode");
+                String ad = documentSnapshot.getString("address");
+                mailid = documentSnapshot.getString("email");
+                oname.setText(fullName);
+                onumber.setText(phno);
+                oaddress.setText(ad);
+                opin.setText(pc);
             }
         });
 
@@ -180,7 +150,6 @@ public class RentBook extends AppCompatActivity {
                 order.put("updatedat", dateTime);
 
                 order.put("docverified",0);
-                order.put("days",days);
                 int otp = (int) (Math.random() * 9000) + 1000;
                 order.put("otp", String.valueOf(otp));
 
@@ -195,8 +164,9 @@ public class RentBook extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Intent i = new Intent(RentBook.this, Placed.class);
+                                        Intent i = new Intent(RentBook.this, OrderHistoryC.class);
                                         startActivity(i);
+                                        finish();
                                     }
                                 }
                             });

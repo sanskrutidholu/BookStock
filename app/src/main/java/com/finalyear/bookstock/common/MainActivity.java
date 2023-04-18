@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
         //Checked signed
         fAuth = FirebaseAuth.getInstance();
         mAuthStateListener =new FirebaseAuth.AuthStateListener() {
@@ -73,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
+
     @Override
     public void onStart() {
         super.onStart();
 
         Animation animationUtils = AnimationUtils.loadAnimation(this,R.anim.splash_animation);
         LinearLayout imageView = findViewById(R.id.ll);
-
         imageView.startAnimation(animationUtils);
 
         int SPLASH_TIME_OUT = 3000;

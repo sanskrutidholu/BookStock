@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,8 @@ import java.util.Objects;
 
 public class ProfileCustomer extends AppCompatActivity {
 
-    private EditText ufirstname,ulastname,uphno,uaddress,upincode,verifyemail;
+    private EditText ufirstname,ulastname,uphno,uaddress,upincode;
+    TextView verifyemail;
     private String semail,sfirstname,slastname,sphno,saddress,spincode,userid;
     ProgressBar uProgress;
     //Firebase
@@ -36,6 +38,7 @@ public class ProfileCustomer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_customer);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         ufirstname = findViewById(R.id.ufirstname);
         ulastname = findViewById(R.id.ulastname);

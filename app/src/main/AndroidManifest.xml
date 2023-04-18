@@ -17,24 +17,24 @@
         android:usesCleartextTraffic="true"
         tools:ignore="HardcodedDebugMode">
         <activity
-            android:name=".common.MainScreenActivity">
-        </activity>
+            android:name=".common.BookPreviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".cuctomer.SearchBooksActivity"
+            android:exported="false" />
+        <activity android:name=".common.MainScreenActivity" />
         <activity android:name=".cuctomer.RentBook" />
         <activity android:name=".cuctomer.ViewOrderCustomer" />
         <activity android:name=".cuctomer.UpdateOrder" />
-        <activity android:name=".cuctomer.Placed" />
         <activity android:name=".cuctomer.BuyBook" />
         <activity android:name=".cuctomer.BookInfoOrder" />
         <activity android:name=".cuctomer.BookInfo" />
         <activity android:name=".extras.PreviewBook" />
         <activity android:name=".seller.AddBook" />
-        <activity android:name=".cuctomer.AboutApp" />
         <activity
             android:name=".common.HomeSeller"
             android:label="@string/title_activity_home_seller"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".cuctomer.ContactDeveloper" />
-        <activity android:name=".cuctomer.PaymentHistoryC" />
         <activity android:name=".cuctomer.OrderHistoryC" />
         <activity android:name=".cuctomer.ProfileCustomer" />
         <activity
@@ -44,7 +44,8 @@
         <activity android:name=".common.CreatAccountSeller" />
         <activity android:name=".common.forgot_password" />
         <activity android:name=".common.CustomerLogin" />
-        <activity android:name=".common.MainActivity"
+        <activity
+            android:name=".common.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

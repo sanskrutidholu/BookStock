@@ -7,19 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.bookcave.seller.HomecFragment"
+        android:name="com.finalyear.bookstock.cuctomer.HomecFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_homec" />
 
     <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.example.bookcave.cuctomer.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
-
-    <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.bookcave.cuctomer.profile.ProfileFragment"
+        android:name="com.finalyear.bookstock.cuctomer.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
