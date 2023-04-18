@@ -18,6 +18,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
 public class BookInfoOrder extends AppCompatActivity {
 
     ImageView bthumbnail;
@@ -30,6 +32,7 @@ public class BookInfoOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_info_order);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         bthumbnail=findViewById(R.id.bthumbnail);
         btitle=findViewById(R.id.btitle);
@@ -63,28 +66,22 @@ public class BookInfoOrder extends AppCompatActivity {
         final int quantities = intent.getIntExtra("qu", 0);
 
 
-        bshow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse(preview);
-               Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-               startActivity(intent);
-            }
+        bshow.setOnClickListener(v -> {
+            Uri uri = Uri.parse(preview);
+            Intent intent1 = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent1);
         });
 
         assert sellerid != null;
         DocumentReference docRef = db.collection("Users").document(sellerid);
 
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                        sn = documentSnapshot.getString("shop");
-                        sa = documentSnapshot.getString("address");
-                        sname.setText(sn);
-                        sadd.setText(sa);
-                }
-                }
+        docRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                    sn = documentSnapshot.getString("shop");
+                    sa = documentSnapshot.getString("address");
+                    sname.setText(sn);
+                    sadd.setText(sa);
+            }
             });
 
         btitle.setText(book_title);
@@ -97,55 +94,47 @@ public class BookInfoOrder extends AppCompatActivity {
 
         Glide.with(BookInfoOrder.this).load(image).placeholder(R.drawable.loading_shape).dontAnimate().into(bthumbnail);
 
-        buybook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(quantities==0)
-                {
-                    Toast.makeText(BookInfoOrder.this, "Sorry, book is not currently available \uD83D\uDE22", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Intent i = new Intent(BookInfoOrder.this, BuyBook.class);
-                    i.putExtra("book_id", book_id);
-                    i.putExtra("book_author", book_author);
-                    i.putExtra("book_title", book_title);
-                    i.putExtra("book_thumbnail", image);
-                    i.putExtra("book_cat", book_cat);
+        buybook.setOnClickListener(v -> {
+            if(quantities==0)
+            {
+                Toast.makeText(BookInfoOrder.this, "Sorry, book is not currently available \uD83D\uDE22", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Intent i = new Intent(BookInfoOrder.this, BuyBook.class);
+                i.putExtra("book_id", book_id);
+                i.putExtra("book_author", book_author);
+                i.putExtra("book_title", book_title);
+                i.putExtra("book_thumbnail", image);
 
-                    i.putExtra("seller", sellerid);
-                    i.putExtra("sellerbookid", sellerbookid);
-                    i.putExtra("rp", rprice);
-                    i.putExtra("sp", sprice);
-                    i.putExtra("dc", dprice);
-                    i.putExtra("qu", quantities);
-                    startActivity(i);
-                }
+                i.putExtra("seller", sellerid);
+                i.putExtra("sellerbookid", sellerbookid);
+                i.putExtra("rp", rprice);
+                i.putExtra("sp", sprice);
+                i.putExtra("dc", dprice);
+                i.putExtra("qu", quantities);
+                startActivity(i);
             }
         });
 
-        rentbook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(quantities==0)
-                {
-                    Toast.makeText(BookInfoOrder.this, "Sorry, book is not currently available \uD83D\uDE22", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Intent i = new Intent(BookInfoOrder.this, RentBook.class);
-                    i.putExtra("book_id", book_id);
-                    i.putExtra("book_author", book_author);
-                    i.putExtra("book_title", book_title);
-                    i.putExtra("book_thumbnail", image);
-                    i.putExtra("book_cat", book_cat);
+        rentbook.setOnClickListener(v -> {
+            if(quantities==0)
+            {
+                Toast.makeText(BookInfoOrder.this, "Sorry, book is not currently available \uD83D\uDE22", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Intent i = new Intent(BookInfoOrder.this, RentBook.class);
+                i.putExtra("book_id", book_id);
+                i.putExtra("book_author", book_author);
+                i.putExtra("book_title", book_title);
+                i.putExtra("book_thumbnail", image);
 
-                    i.putExtra("seller", sellerid);
-                    i.putExtra("sellerbookid", sellerbookid);
-                    i.putExtra("rp", rprice);
-                    i.putExtra("sp", sprice);
-                    i.putExtra("dc", dprice);
-                    i.putExtra("qu", quantities);
-                    startActivity(i);
-                }
+                i.putExtra("seller", sellerid);
+                i.putExtra("sellerbookid", sellerbookid);
+                i.putExtra("rp", rprice);
+                i.putExtra("sp", sprice);
+                i.putExtra("dc", dprice);
+                i.putExtra("qu", quantities);
+                startActivity(i);
             }
         });
     }

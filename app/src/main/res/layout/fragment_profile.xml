@@ -1,153 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".cuctomer.profile.ProfileFragment">
+    tools:context=".cuctomer.ProfileFragment">
 
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/profilePicture"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/pro_pic_demo" />
-
-    <TextView
-        android:id="@+id/profileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/profilePicture"
-        android:layout_marginTop="5dp"
-        android:textSize="24sp"/>
-
-    <ImageView
-        android:id="@+id/desi"
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:background="@color/skyblue"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/profileName"
-        android:contentDescription="@string/design"
-        android:scaleX="1.4"
-        android:scaleY="1.2"
-        android:src="@drawable/design_settings" />
+        android:layout_height="?actionBarSize">
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:text="Profile"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
     <ScrollView
-        android:layout_below="@id/desi"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <LinearLayout
-            android:id="@+id/masterLayout"
+            android:layout_marginVertical="20dp"
             android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/linearl0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="100dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/profilePicture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/pro_pic_demo" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/myprofileicon"
-            android:layout_marginStart="30dp"
-            android:contentDescription="@string/profile" />
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/profile"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
+                <TextView
+                    android:text="Welcome, "
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@color/dirtyblue"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-    <View
-        android:layout_width="370dp"
-        android:layout_height="1dp"
-        android:background="@color/darkBlue"
-        android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/profileName"
+                    android:gravity="center"
+                    android:hint="Sonu"
+                    android:text="Name"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-    <LinearLayout
-        android:id="@+id/linearl3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
+            </LinearLayout>
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/orderhistoryicon"
-            android:layout_marginStart="30dp"
-            android:contentDescription="@string/order_history" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/email"
+                android:text="Email"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/order_history"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEditProfile"
+                android:background="@color/dirtyblue"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="Edit Profile"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_width="120dp"
+                android:layout_height="30dp"/>
 
-    <View
-        android:layout_width="370dp"
-        android:layout_height="1dp"
-        android:background="@color/darkBlue"
-        android:layout_marginTop="5dp"/>
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:id="@+id/linearl3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/linearl4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/orderhistoryicon"
+                    android:contentDescription="@string/order_history" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/paymenthistoryicon"
-            android:layout_marginStart="30dp"
-            android:contentDescription="@string/payment_history" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/payment_history"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"/>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_history"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
 
             <View
                 android:layout_width="370dp"
                 android:layout_height="1dp"
                 android:background="@color/darkBlue"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginVertical="15dp"/>
 
             <LinearLayout
                 android:id="@+id/linearl5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/devicon"
-                    android:layout_marginStart="30dp"
                     android:contentDescription="@string/contact_dev" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -163,20 +153,72 @@
                 android:layout_width="370dp"
                 android:layout_height="1dp"
                 android:background="@color/darkBlue"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginVertical="15dp"/>
+
+            <LinearLayout
+                android:id="@+id/linearl7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/terms"
+                    android:contentDescription="@string/contact_dev" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terms and Conditions"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="370dp"
+                android:layout_height="1dp"
+                android:background="@color/darkBlue"
+                android:layout_marginVertical="15dp"/>
+
+            <LinearLayout
+                android:id="@+id/linearl8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/privacy_policy"
+                    android:contentDescription="@string/contact_dev" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy Policy"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="370dp"
+                android:layout_height="1dp"
+                android:background="@color/darkBlue"
+                android:layout_marginVertical="15dp"/>
 
             <LinearLayout
                 android:id="@+id/linearl6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/about_36"
-                    android:layout_marginStart="30dp"
                     android:contentDescription="@string/help" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -192,51 +234,26 @@
                 android:layout_width="370dp"
                 android:layout_height="1dp"
                 android:background="@color/darkBlue"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginVertical="15dp"/>
 
-            <LinearLayout
-                android:id="@+id/linearl7"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/logout"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="40dp"
+                android:background="@color/dirtyblue"
+                android:text="Log Out"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp">
+                android:layout_height="40dp"/>
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/logouticon"
-                    android:layout_marginStart="30dp"
-                    android:contentDescription="@string/log_out" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:text="@string/log_out"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="10dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearl8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:text="@string/design"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="10dp"/>
-            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
-</RelativeLayout>
+
+
+
+</LinearLayout>
+

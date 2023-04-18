@@ -1,31 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".cuctomer.ProfileCustomer">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:background="@color/skyblue"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        android:focusableInTouchMode="true">
+        android:layout_height="?actionBarSize">
 
         <TextView
-            android:id="@+id/ActivityHead"
-            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="@string/update_det"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito"
-            android:textSize="22sp"/>
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:textColor="@color/dirtyblue"
+            android:layout_marginTop="10dp"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="@string/update_det"/>
 
         <ProgressBar
             android:id="@+id/uProgress"
@@ -33,141 +48,207 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
+            android:layout_marginVertical="10dp"
             android:background="@color/white"
             android:indeterminate="true"
             android:visibility="gone" />
 
-
-        <Space
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/ufirstname"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_corner_hollow"
-            android:hint="@string/f_name"
-            android:textColorLink="@color/black"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="19sp" />
+            <TextView
+                android:text="First Name"
+                android:textColor="@color/dirtyblue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <Space
+            <EditText
+                android:id="@+id/ufirstname"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backgorund_list"
+                android:hint="@string/f_name"
+                android:textColorLink="@color/black"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nunito"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/ulastname"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_corner_hollow"
-            android:hint="@string/l_name"
-            android:textColorLink="@color/black"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textSize="19sp" />
+            <TextView
+                android:text="Last Name"
+                android:textColor="@color/dirtyblue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <Space
+            <EditText
+                android:id="@+id/ulastname"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backgorund_list"
+                android:hint="@string/l_name"
+                android:textColorLink="@color/black"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nunito"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/uphno"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_corner_hollow"
-            android:hint="@string/ph_no"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:inputType="number"
-            android:maxLength="10"
-            android:textColorLink="@color/black"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito"
-            android:textSize="19sp" />
+            <TextView
+                android:text="Phone No"
+                android:textColor="@color/dirtyblue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <Space
+            <EditText
+                android:id="@+id/uphno"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backgorund_list"
+                android:hint="@string/ph_no"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColorLink="@color/black"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nunito"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Address"
+                android:textColor="@color/dirtyblue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/uaddress"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backgorund_list"
+                android:hint="@string/address"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:inputType="textPostalAddress"
+                android:textColorLink="@color/black"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nunito"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Pincode"
+                android:textColor="@color/dirtyblue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/upincode"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backgorund_list"
+                android:hint="@string/pincode"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:inputType="number"
+                android:maxLength="6"
+                android:textColorLink="@color/black"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nunito"
+                android:textSize="19sp" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/subtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="60dp"
-            android:paddingBottom="6dp"
-            android:text="@string/for_order"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito"
-            android:textSize="17sp"/>
-
-        <EditText
-            android:id="@+id/uaddress"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_corner_hollow"
-            android:hint="@string/address"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:inputType="textPostalAddress"
-            android:textColorLink="@color/black"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito"
-            android:textSize="19sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp"/>
-
-        <EditText
-            android:id="@+id/upincode"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/round_corner_hollow"
-            android:hint="@string/pincode"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:inputType="number"
-            android:maxLength="6"
-            android:textColorLink="@color/black"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito"
-            android:textSize="19sp" />
-
-        <EditText
+            android:layout_marginHorizontal="10dp"
+            android:padding="10dp"
+            android:textColor="@color/darkBlue"
+            android:textStyle="bold"
+            android:layout_gravity="end"
             android:id="@+id/verifyemail"
-            android:layout_marginTop="30dp"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:hint="@string/verifyemail"
-            android:background="@drawable/sea_round_corner"
-            android:textAlignment="center"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="25dp"/>
-        <Button
-            android:id="@+id/updateButton"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:text="@string/updansave"
-            android:textColor="@color/white"
-            android:background="@drawable/round_corner"
-            android:textAllCaps="false" />
+            android:text="@string/verifyemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
-</ScrollView>
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="60dp"
+        android:text="@string/updansave"
+        android:textColor="@color/white"
+        android:background="@drawable/round_corner"
+        android:textAllCaps="false" />
+
+
+
+</LinearLayout>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="?actionBarSize"
     android:orientation="vertical"
     android:background="#EDEDED"
     tools:context=".cuctomer.HomecFragment">
@@ -18,7 +17,7 @@
             android:layout_marginStart="10dp"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
-            android:text="Home"
+            android:text="Search Books"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -27,35 +26,37 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:background="@drawable/backgorund_list"
         android:gravity="center"
-        android:layout_marginVertical="10dp"
+        android:layout_marginVertical="15dp"
         android:layout_marginHorizontal="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:gravity="end"
-            android:textSize="18sp"
-            android:textColor="@color/dirtyblue"
-            android:textStyle="bold"
-            android:text="Want to Explore Books ?"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/et_search"
+            android:hint="Search book over Internet"
+            android:layout_marginEnd="5dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/iv_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
 
-        <TextView
-            android:id="@+id/tv_explore"
-            android:layout_marginStart="5dp"
-            android:gravity="end"
-            android:textSize="18sp"
-            android:textColor="@color/dirtyblue"
-            android:textStyle="bold"
-            android:text="Click Here"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+       <ImageView
+           android:layout_centerVertical="true"
+           android:id="@+id/iv_search"
+           android:layout_alignParentEnd="true"
+           android:background="@android:color/transparent"
+           android:src="@drawable/search_button"
+           android:layout_width="30dp"
+           android:layout_height="30dp"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:visibility="gone"
@@ -69,7 +70,7 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyler_home_page_books"
+                android:id="@+id/recyler_search"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -86,22 +87,24 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:src="@drawable/empty_store"
+            android:src="@drawable/search_book"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/dirtyblue"
             android:textSize="16sp"
-            android:text="No books available \nWait for sometimes else visit the store"
+            android:text="Search books in Internet and preview it"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
 
 
     </LinearLayout>
+
+
+
 
 </LinearLayout>
