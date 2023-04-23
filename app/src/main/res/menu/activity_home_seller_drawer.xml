@@ -3,24 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/home_filled_36"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/add_book_36"
-            android:title="@string/menu_addbook" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/book_list_36"
-            android:title="@string/menu_update_order" />
-        <item
-            android:id="@+id/nav_booklist"
-            android:icon="@drawable/book_list_36"
-            android:title="@string/menu_booklist" />
-    </group>
+
+    <item android:title="Home">
+        <menu>
+            <item
+                android:id="@+id/nav_booklist"
+                android:icon="@drawable/book_list_36"
+                android:title="@string/menu_booklist" />
+
+            <item
+                android:id="@+id/nav_add_books"
+                android:icon="@drawable/add_book_36"
+                android:title="@string/menu_addbook" />
+
+            <item
+                android:id="@+id/nav_order_received"
+                android:icon="@drawable/home_filled_36"
+                android:title="@string/menu_home" />
+
+        </menu>
+    </item>
+
 
     <item android:title="@string/menu_info">
         <menu>

@@ -136,7 +136,7 @@ public class SellerCurrentOrdersFragment extends Fragment {
             row_bb=mView.findViewById(R.id.row_bb);
             row_orderupdate=mView.findViewById(R.id.row_orderupdate);
             row_add=mView.findViewById(R.id.row_add);
-            row_details=mView.findViewById(R.id.row_details);
+//            row_details=mView.findViewById(R.id.row_details);
         }
     }
 }
