@@ -1,6 +1,7 @@
 package com.finalyear.bookstock.seller;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -28,7 +29,7 @@ import java.util.UUID;
 
 public class AddBook extends AppCompatActivity {
 
-    TextView title;
+    TextView title, author;
     ImageView thumbnail;
     Button previewBtn;
     private EditText uquantity,uprice,urprice,udprice;
@@ -52,6 +53,7 @@ public class AddBook extends AppCompatActivity {
         final String book_cat = intent.getStringExtra("book_categories");
 
         title=findViewById(R.id.title);
+        author=findViewById(R.id.author);
         uquantity=findViewById(R.id.uquantity);
         uprice=findViewById(R.id.uprice);
         urprice=findViewById(R.id.urprice);
@@ -60,17 +62,19 @@ public class AddBook extends AppCompatActivity {
         previewBtn=findViewById(R.id.previewBtn);
         thumbnail=findViewById(R.id.thumbnail);
 
-
-        title.setText(book_title);
-        Glide.with(AddBook.this).load(image).placeholder(R.drawable.loading_shape).dontAnimate().into(thumbnail);
         previewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AddBook.this , PreviewBook.class);
-                i.putExtra("book_preview" ,preview);
-                startActivity(i);
+                Uri uri = Uri.parse(preview);
+                Intent intent1 = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent1);
             }
         });
+
+
+        title.setText(book_title);
+        author.setText(book_author);
+        Glide.with(AddBook.this).load(image).placeholder(R.drawable.loading_shape).dontAnimate().into(thumbnail);
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,26 +110,19 @@ public class AddBook extends AppCompatActivity {
                 final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                 userid = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
-                updateBtn.setText("Adding new stock...");
+                updateBtn.setText("Adding Your Book...");
 
                 SellingBook sellingBook=new SellingBook(book_id,uniqueid,userid,uq,up,urp,udp,book_title,book_author,book_desc,book_cat,image,preview);
-                /*
-                Map<String, Object> book = new HashMap<>();
-                book.put("sellerid", userid);
-                book.put("bookid", isbndata);
-                book.put("quantities", uq);
-                book.put("sellingprice", up);
-                book.put("rentingprice", urp);
-                book.put("deliverycharges", udp);
-                 */
 
                 db.collection("SellingList").document(uniqueid).set(sellingBook).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         updateBtn.setText("Add book to selling list");
                         if(task.isSuccessful()) {
-                            Toast.makeText(AddBook.this,"Stock added successfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddBook.this,"Book added successfully", Toast.LENGTH_LONG).show();
                             Intent i =new Intent(AddBook.this, HomeSeller.class);
+                            startActivity(i);
+                            finish();
                         } else{
                             String errorMessage = Objects.requireNonNull(task.getException()).getMessage();
                             Toast.makeText(AddBook.this, "Error: " + errorMessage, Toast.LENGTH_LONG).show();

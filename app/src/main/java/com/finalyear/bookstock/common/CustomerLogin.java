@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.finalyear.bookstock.R;
@@ -126,16 +127,27 @@ public class CustomerLogin extends AppCompatActivity {
                                             String type= documentSnapshot.getString("usertype");
                                             assert type != null;
                                             if(type.equals("Customer")){
-                                                Intent intent = new Intent(CustomerLogin.this, HomeCustomer.class);
-                                                startActivity(intent);
-                                                finish();
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerLogin.this, androidx.appcompat.R.style.Base_Theme_AppCompat_Dialog);
+                                                builder.setTitle("Attention Required!!")
+                                                        .setMessage("Are yo sure,\nTo login as Customer...")
+                                                        .setCancelable(true)
+                                                        .setNegativeButton("NO", (dialog, which) -> dialog.cancel())
+                                                        .setPositiveButton("YES",(dialog,which) -> loginCustomer());
+                                                AlertDialog alert = builder.create();
+                                                alert.show();
+
                                             }else if(type.equals("Seller")){
-                                                Intent intent = new Intent(CustomerLogin.this, HomeSeller.class);
-                                                intent.putExtra("user_id" ,userid);
-                                                startActivity(intent);
-                                                finish();
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerLogin.this, androidx.appcompat.R.style.Base_Theme_AppCompat_Dialog);
+                                                builder.setTitle("Attention Required!!")
+                                                        .setMessage("Are yo sure,\nTo login as Seller...")
+                                                        .setCancelable(true)
+                                                        .setNegativeButton("NO", (dialog, which) -> dialog.cancel())
+                                                        .setPositiveButton("YES",(dialog,which) -> loginSeller());
+                                                AlertDialog alert = builder.create();
+                                                alert.show();
                                             }
                                         }
+                                        
                                         loginButton.setText("Sign In");
                                 }
                             });
@@ -152,5 +164,18 @@ public class CustomerLogin extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void loginCustomer(){
+        Intent intent = new Intent(CustomerLogin.this, HomeCustomer.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void loginSeller(){
+        Intent intent = new Intent(CustomerLogin.this, HomeSeller.class);
+        intent.putExtra("user_id" ,userid);
+        startActivity(intent);
+        finish();
     }
 }

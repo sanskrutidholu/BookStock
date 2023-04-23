@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.finalyear.bookstock.R;
 import com.finalyear.bookstock.seller.AddBook;
+import com.finalyear.bookstock.seller.BookDescriptionActivity;
 
 import java.util.List;
 
@@ -37,13 +39,13 @@ public class ABRecyclerViewAdapter extends RecyclerView.Adapter<ABRecyclerViewAd
 
         View view;
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        view = inflater.inflate(R.layout.row_book_api_result, parent , false);
+        view = inflater.inflate(R.layout.seller_row_search_book, parent , false);
         final MyViewHolder viewHolder =  new MyViewHolder(view);
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(mContext , AddBook.class);
+                Intent i = new Intent(mContext , BookDescriptionActivity.class);
                 int pos = viewHolder.getAdapterPosition();
                 i.putExtra("book_title" ,mData.get(pos).getTitle());
                 i.putExtra("book_author" ,mData.get(pos).getAuthors());
@@ -86,7 +88,7 @@ public class ABRecyclerViewAdapter extends RecyclerView.Adapter<ABRecyclerViewAd
 
         ImageView tvThumbnail ;
         TextView tvTitle , tvCategory , tvPrice , tvAuthor;
-        LinearLayout container ;
+        RelativeLayout container ;
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,18 +10,12 @@
     android:orientation="vertical"
     tools:context=".seller.BooklistFragment">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_available"
+        android:visibility="gone"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/empty_message"
-            android:visibility="invisible"
-            android:layout_centerHorizontal="true"
-            tools:text="No books present in the list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/seller_book_list"
@@ -28,6 +24,48 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:id="@+id/ll_not_available"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:src="@drawable/empty_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/dirtyblue"
+            android:textSize="16sp"
+            android:text="No books found"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_addBooks"
+            android:background="@drawable/round_corner"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="Add books Now?"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

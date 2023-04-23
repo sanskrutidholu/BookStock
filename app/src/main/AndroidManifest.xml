@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:ignore="HardcodedDebugMode">
         <activity
+            android:name=".seller.BookDescriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".common.SellerLogin"
+            android:exported="false" />
+        <activity
             android:name=".common.BookPreviewActivity"
             android:exported="false" />
         <activity
