@@ -114,4 +114,10 @@ public class HomecFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        showNewAvailables();
+    }
+
 }
